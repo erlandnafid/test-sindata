@@ -1,22 +1,149 @@
-.App {
-  text-align: center;
+@import "~antd/dist/antd.css";
+
+body {
+  position: relative;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
+.ant-layout {
+  background: #fff !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.custom-icon {
+  font-size: x-large;
+  margin: 0 0.5rem 1rem 0;
 }
 
-.App-link {
-  color: #09d3ac;
+/* modal styles */
+.ant-modal-header {
+  background-image: linear-gradient(
+    to bottom,
+    #1890ff,
+    #0075ee,
+    #0059da,
+    #003cc4,
+    #1a18ac
+  );
+}
+
+.ant-modal-title {
+  color: #ffffff;
+}
+
+.ant-modal-close-x {
+  display: none;
+}
+
+.ant-form-item-label {
+  width: 100%;
+  text-align: left;
+}
+
+/* table style */
+.editable-cell {
+  position: relative;
+}
+
+.editable-cell-input-wrapper,
+.editable-cell-text-wrapper {
+  padding-right: 24px;
+}
+
+.editable-cell-text-wrapper {
+  padding: 5px 24px 5px 5px;
+}
+
+.editable-cell-icon,
+.editable-cell-icon-check {
+  position: absolute;
+  right: 0;
+  width: 20px;
+  cursor: pointer;
+}
+
+.editable-cell-icon {
+  line-height: 18px;
+  display: none;
+}
+
+.editable-cell-icon-check {
+  line-height: 28px;
+}
+
+.editable-cell:hover .editable-cell-icon {
+  display: inline-block;
+}
+
+.editable-cell-icon:hover,
+.editable-cell-icon-check:hover {
+  color: #108ee9;
+}
+
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  padding: 2px;
+}
+
+.ant-table-bordered .ant-table-thead > tr > th,
+.ant-table-bordered .ant-table-tbody > tr > td {
+  border-color: #ffffff;
+}
+
+.ant-table-bordered .ant-table-thead > tr:nth-child(even) > th,
+.ant-table-bordered .ant-table-tbody > tr:nth-child(even) > td {
+  background-color: #e6f7ff;
+}
+
+.ant-table-thead > tr > th {
+  background-image: linear-gradient(
+    to bottom,
+    #1890ff,
+    #0075ee,
+    #0059da,
+    #003cc4,
+    #1a18ac
+  ) !important;
+  color: #ffffff;
+  padding: 7px;
+  border-color: #ffffff;
+}
+
+.ant-table-bordered .ant-table-header > table,
+.ant-table-bordered .ant-table-body > table,
+.ant-table-bordered .ant-table-fixed-left table,
+.ant-table-bordered .ant-table-fixed-right table {
+  border-color: #ffffff;
+}
+
+.ant-table-thead
+  > tr
+  > th.ant-table-column-has-actions.ant-table-column-has-sorters:hover {
+  background-image: linear-gradient(
+    to bottom,
+    #1890ff,
+    #0075ee,
+    #0059da,
+    #003cc4,
+    #1a18ac
+  );
+}
+
+.ant-table-header-column {
+  width: 100%;
+}
+
+.ant-table-column-sorters {
+  width: 100%;
+}
+
+.ant-table-column-sorter {
+  float: right;
+}
+
+.ant-table-thead
+  > tr
+  > th
+  .ant-table-column-sorter
+  .ant-table-column-sorter-inner-full {
+  margin-top: 0;
 }
