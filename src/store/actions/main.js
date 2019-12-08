@@ -1,4 +1,4 @@
-import { DATA_SOURCE, DATA_SOURCE_TMP, KEYWORD } from './actionTypes'
+import { DATA_SOURCE, DATA_SOURCE_TMP } from './actionTypes'
 
 export const dataSource = (item) => {
     return {
@@ -11,12 +11,5 @@ export const dataSourceTmp = (item) => {
     return {
         type: DATA_SOURCE_TMP,
         dataSourceTmp: item
-    }
-}
-
-export const keyword = (item) => {
-    return {
-        type: KEYWORD,
-        keyword: item
     }
 }

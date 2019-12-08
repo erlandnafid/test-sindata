@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Table, Input, Icon, Popconfirm } from "antd";
 import { connect } from "react-redux";
-import { dataSource } from "../store/actions/index";
+import { dataSource, dataSourceTmp } from "../store/actions/index";
 
 class EditableCell extends Component {
   state = {
@@ -13,9 +13,11 @@ class EditableCell extends Component {
     this.setState({ value });
   };
   check = () => {
-    this.setState({ editable: false });
-    if (this.props.onChange) {
-      this.props.onChange(this.state.value);
+    if (this.state.value.length !== 0) {
+      this.setState({ editable: false });
+      if (this.props.onChange) {
+        this.props.onChange(this.state.value);
+      }
     }
   };
   edit = () => {
@@ -118,16 +120,20 @@ class EditableTable extends Component {
       if (target) {
         target[dataIndex] = value;
         this.props.onDataSource(dataSource);
+        this.props.onDataSourceTmp(dataSource);
       }
     };
   };
 
   onDelete = key => {
     const dataSource = [...this.props.dataSource];
+    const dataSourceTmp = [...this.props.dataSourceTmp];
     const supplier = dataSource.filter(item => item.key !== key);
+    const supplierTmp = dataSourceTmp.filter(item => item.key !== key);
     this.props.onDataSource(supplier);
+    this.props.onDataSourceTmp(supplierTmp);
   };
-  
+
   render() {
     return (
       <div>
@@ -143,13 +149,15 @@ class EditableTable extends Component {
 
 const mapStateToProps = state => {
   return {
-    dataSource: state.main.dataSource
+    dataSource: state.main.dataSource,
+    dataSourceTmp: state.main.dataSourceTmp
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onDataSource: item => dispatch(dataSource(item))
+    onDataSource: item => dispatch(dataSource(item)),
+    onDataSourceTmp: item => dispatch(dataSourceTmp(item))
   };
 };
 

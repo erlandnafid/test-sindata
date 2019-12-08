@@ -5,7 +5,7 @@ import { Button, Input } from "antd";
 
 class Search extends Component {
   state = {
-    keyword: this.props.keyword
+    keyword: ''
   };
 
   searchInput = event => {
@@ -13,17 +13,17 @@ class Search extends Component {
   };
 
   _onSearch = () => {
-    this.props.onDataSourceTmp(this.props.dataSource)
-    const data = this.props.dataSource.filter(item => {
+    const data = this.props.dataSourceTmp.filter(item => {
       return item.name.toLowerCase().search(this.state.keyword.toLowerCase()) !== -1;
     });
     this.props.onDataSource(data);
+    this.setState({ keyword: '' });
   };
 
   render() {
     return (
       <div>
-        <p style={{ marginBottom: 5 }}>Search Supplier Nam</p>
+        <p style={{ marginBottom: 5 }}>Search Supplier Name</p>
         <Input
           value={this.state.keyword}
           onChange={this.searchInput}
@@ -38,10 +38,9 @@ class Search extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     dataSource: state.main.dataSource,
-    keyword: state.main.keyword
+    dataSourceTmp: state.main.dataSourceTmp
   };
 };
 

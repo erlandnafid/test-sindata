@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { dataSource, keyword } from "../store/actions/index";
+import { dataSource, dataSourceTmp } from "../store/actions/index";
 import { Modal, Button, Icon, Form, Input, Row, Col } from "antd";
 
 class AddData extends Component {
@@ -45,27 +45,26 @@ class AddData extends Component {
   };
 
   _onRefresh = () => {
-    const keyword = "hi";
-    this.props.onKeyword(keyword);
-    this.props.dataSourceTmp.length !== 0
-      ? this.props.onDataSource(this.props.dataSourceTmp)
-      : this.props.onDataSource(this.props.dataSource);
+    this.props.onDataSource(this.props.dataSourceTmp)
   };
 
   _onSave = () => {
     this.setState({ loading: true });
     setTimeout(() => {
       let dataSource = this.props.dataSource;
+      let dataSourceTmp = this.props.dataSourceTmp;
 
       const newData = {
-        key: this.props.dataSource.length + 1,
+        key: `${this.state.supplier.name}${Math.random()}`,
         name: this.state.supplier.name,
         address: this.state.supplier.address,
         phone: this.state.supplier.phone
       };
 
       dataSource = [newData, ...dataSource];
+      dataSourceTmp = [newData, ...dataSourceTmp];
       this.props.onDataSource(dataSource);
+      this.props.onDataSourceTmp(dataSourceTmp);
       this.setState({
         loading: false,
         visible: false,
@@ -210,7 +209,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onDataSource: item => dispatch(dataSource(item)),
-    onKeyword: item => dispatch(keyword(item))
+    onDataSourceTmp: item => dispatch(dataSourceTmp(item))
   };
 };
 
