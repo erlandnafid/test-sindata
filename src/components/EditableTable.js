@@ -126,11 +126,9 @@ class EditableTable extends Component {
   };
 
   onDelete = key => {
-    const dataSource = [...this.props.dataSource];
     const dataSourceTmp = [...this.props.dataSourceTmp];
-    const supplier = dataSource.filter(item => item.key !== key);
     const supplierTmp = dataSourceTmp.filter(item => item.key !== key);
-    this.props.onDataSource(supplier);
+    this.props.onDataSource(supplierTmp);
     this.props.onDataSourceTmp(supplierTmp);
   };
 

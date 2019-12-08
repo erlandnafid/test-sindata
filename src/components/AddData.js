@@ -51,7 +51,6 @@ class AddData extends Component {
   _onSave = () => {
     this.setState({ loading: true });
     setTimeout(() => {
-      let dataSource = this.props.dataSource;
       let dataSourceTmp = this.props.dataSourceTmp;
 
       const newData = {
@@ -61,9 +60,8 @@ class AddData extends Component {
         phone: this.state.supplier.phone
       };
 
-      dataSource = [newData, ...dataSource];
       dataSourceTmp = [newData, ...dataSourceTmp];
-      this.props.onDataSource(dataSource);
+      this.props.onDataSource(dataSourceTmp);
       this.props.onDataSourceTmp(dataSourceTmp);
       this.setState({
         loading: false,
@@ -200,6 +198,7 @@ class AddData extends Component {
 const WrappedHorizontalLoginForm = Form.create({ name: "add_data" })(AddData);
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
     dataSource: state.main.dataSource,
     dataSourceTmp: state.main.dataSourceTmp
