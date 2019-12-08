@@ -23,7 +23,7 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <p style={{ marginBottom: 5 }}>Search Supplier Name</p>
+        <p style={{ marginBottom: 5 }}>Search Supplier Nam</p>
         <Input
           value={this.state.keyword}
           onChange={this.searchInput}
